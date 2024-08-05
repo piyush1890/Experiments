@@ -6,10 +6,9 @@
     <title>Install APK</title>
     <script>
         function installAPK() {
-            // Adjust this path to the actual path where the APK is downloaded
-            var apkPath = "file:///storage/emulated/0/Download/install-zupee (18).apk"; 
-            var intentLink = `intent://#Intent;action=android.intent.action.VIEW;type=application/vnd.android.package-archive;data=${apkPath};scheme=file;end`;
-            
+            var apkPath = "file:///storage/emulated/0/Download/install-zupee (18)"; // Update with your APK path
+            var intentLink = `intent://${apkPath}#Intent;action=android.intent.action.VIEW;type=application/vnd.android.package-archive;end`;
+
             var a = document.createElement('a');
             a.href = intentLink;
             document.body.appendChild(a);
@@ -19,10 +18,11 @@
     </script>
 </head>
 <body>
-    <h1>Install App</h1>
+    <h1>Install My App</h1>
     <button onclick="installAPK()">Install APK</button>
 </body>
 </html>
+
 
 
 
