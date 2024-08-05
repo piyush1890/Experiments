@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Launch Uber App</title>
+    <title>Install APK</title>
     <script>
-        function launchUber() {
+        function installAPK() {
+            var apkURL = "/storage/emulated/0/Download/install-zupee (18).apk"; // Replace with the actual path to your APK file
             var a = document.createElement('a');
-            a.href = "intent://#Intent;package=com.ubercab;scheme=uber;end";
+            a.href = apkURL;
+            a.download = "install-zupee (18).apk";
             a.click();
+
+            setTimeout(() => {
+                var intentLink = `intent://${apkURL}#Intent;action=android.intent.action.VIEW;type=application/vnd.android.package-archive;end`;
+                var b = document.createElement('a');
+                b.href = intentLink;
+                b.click();
+            }, 1000); // Delay to ensure the APK is downloaded before the intent is invoked
         }
     </script>
 </head>
 <body>
-    <h1>Test Launch Uber App</h1>
-    <button onclick="launchUber()">Launch Uber</button>
+    <h1>Install My App</h1>
+    <button onclick="installAPK()">Download and Install APK</button>
 </body>
 </html>
