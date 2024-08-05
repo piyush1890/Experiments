@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share via WhatsApp</title>
+    <title>Open Downloads Folder</title>
     <script>
-        function shareViaWhatsApp() {
-            var apkURL = "https://apk.zupee.com/zupee/default/install-zupee.apk";
-            var message = encodeURIComponent("Download the app from the following link: " + apkURL);
-            var whatsappURL = "https://wa.me/?text=" + message;
+        function openDownloadsFolder() {
+            var intentLink = `intent://com.android.externalstorage.documents/document/primary%3ADownload#Intent;scheme=content;action=android.intent.action.VIEW;end`;
 
-            window.open(whatsappURL, "_blank");
+            window.location.href = intentLink;
         }
     </script>
 </head>
 <body>
-    <h1>Share the App</h1>
-    <button onclick="shareViaWhatsApp()">Share on WhatsApp</button>
+    <h1>Open Downloads Folder</h1>
+    <button onclick="openDownloadsFolder()">Open Downloads</button>
 </body>
 </html>
 
