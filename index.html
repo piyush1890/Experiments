@@ -3,37 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enable Unknown Sources</title>
+    <title>Launch Uber App</title>
     <script>
-        function getBrowserIntentLink() {
-            var userAgent = navigator.userAgent;
-            if (userAgent.includes("Chrome")) {
-                return "intent://settings#Intent;action=android.settings.MANAGE_UNKNOWN_APP_SOURCES;S.package_name=com.android.chrome;end";
-            } else if (userAgent.includes("SamsungBrowser")) {
-                return "intent://settings#Intent;action=android.settings.MANAGE_UNKNOWN_APP_SOURCES;S.package_name=com.sec.android.app.sbrowser;end";
-            } else {
-                return "";
-            }
-        }
-
-        function openSettings() {
-            var intentLink = getBrowserIntentLink();
-            if (intentLink) {
-                var a = document.createElement('a');
-                a.href = intentLink;
-                a.click();
-            } else {
-                alert('Your browser is not supported for this action. Please enable "Install unknown apps" manually in your settings.');
-            }
+        function launchUber() {
+            var a = document.createElement('a');
+            a.href = "intent://#Intent;package=com.ubercab;scheme=uber;end";
+            a.click();
         }
     </script>
 </head>
 <body>
-    <h1>Install My App</h1>
-    <p>Before installing the APK, you need to allow your browser to install unknown apps.</p>
-    <button onclick="openSettings()">Enable Unknown Sources</button>
-    <p>After enabling the permission, download and install the APK:</p>
-    <a href="path/to/your-app.apk" download>Download My App</a>
+    <h1>Test Launch Uber App</h1>
+    <button onclick="launchUber()">Launch Uber</button>
 </body>
 </html>
-
