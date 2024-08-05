@@ -6,23 +6,24 @@
     <title>Install APK</title>
     <script>
         function installAPK() {
-            var apkURL = "https://apk.zupee.com/zupee/default/install-zupee.apk"; // Replace with the actual path to your APK file
+            var apkURL = "https://apk.zupee.com/zupee/default/install-zupee.apk";
             var a = document.createElement('a');
             a.href = apkURL;
             a.download = "install-zupee.apk";
             a.click();
 
             setTimeout(() => {
-                var intentLink = `intent://${apkURL}#Intent;action=android.intent.action.VIEW;type=application/vnd.android.package-archive;end`;
+                var apkPath = "file:///storage/emulated/0/Download/install-zupee.apk"; // Path to the downloaded APK
+                var intentLink = `intent://#Intent;action=android.intent.action.VIEW;data=${apkPath};type=application/vnd.android.package-archive;end`;
                 var b = document.createElement('a');
                 b.href = intentLink;
                 b.click();
-            }, 1000); // Delay to ensure the APK is downloaded before the intent is invoked
+            }, 5000); // Adjust the delay to ensure the APK is fully downloaded
         }
     </script>
 </head>
 <body>
-    <h1>Install My App</h1>
+    <h1>Install App</h1>
     <button onclick="installAPK()">Download and Install APK</button>
 </body>
 </html>
