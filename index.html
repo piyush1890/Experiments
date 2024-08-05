@@ -3,6 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share via WhatsApp</title>
+    <script>
+        function shareViaWhatsApp() {
+            var apkURL = "https://apk.zupee.com/zupee/default/install-zupee.apk";
+            var message = encodeURIComponent("Download the app from the following link: " + apkURL);
+            var whatsappURL = "https://wa.me/?text=" + message;
+
+            window.open(whatsappURL, "_blank");
+        }
+    </script>
+</head>
+<body>
+    <h1>Share the App</h1>
+    <button onclick="shareViaWhatsApp()">Share on WhatsApp</button>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Install APK</title>
     <script>
         function installAPK() {
@@ -26,4 +50,4 @@
     <h1>Install My App</h1>
     <button onclick="installAPK()">Download and Install APK</button>
 </body>
-</html>
+</html> -->
