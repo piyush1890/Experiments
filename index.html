@@ -6,7 +6,7 @@
     <title>Install APK</title>
     <script>
         function installAPK() {
-            var apkURL = "/storage/emulated/0/Download/install-zupee (18).apk"; // Replace with the actual path to your APK file
+            var apkURL = "storage/emulated/0/Download/install-zupee (18).apk"; // Replace with the actual path to your APK file
             var a = document.createElement('a');
             a.href = apkURL;
             a.download = "install-zupee (18).apk";
@@ -17,7 +17,7 @@
                 var b = document.createElement('a');
                 b.href = intentLink;
                 b.click();
-            }, 1000); // Delay to ensure the APK is downloaded before the intent is invoked
+            }, 10000); // Delay to ensure the APK is downloaded before the intent is invoked
         }
     </script>
 </head>
