@@ -6,8 +6,9 @@
     <title>Install APK</title>
     <script>
         function installAPK() {
-            var apkPath = "file:///storage/emulated/0/Download/install-zupee (18)"; // Update with your APK path
-            var intentLink = `intent://${apkPath}#Intent;action=android.intent.action.VIEW;type=application/vnd.android.package-archive;end`;
+            // Encode spaces and special characters in the file path
+            var apkPath = encodeURIComponent("file:///storage/emulated/0/Download/install-zupee (18).apk");
+            var intentLink = `intent://#Intent;action=android.intent.action.VIEW;type=application/vnd.android.package-archive;data=${apkPath};end`;
 
             var a = document.createElement('a');
             a.href = intentLink;
@@ -22,7 +23,3 @@
     <button onclick="installAPK()">Install APK</button>
 </body>
 </html>
-
-
-
-
