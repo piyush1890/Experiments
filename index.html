@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open File</title>
+    <title>Open File Manager</title>
     <script>
-        function openFile() {
-            var filePath = "file:///storage/emulated/0/Download/install-zupee.apk"; // Adjust the file path as needed
-            var intentLink = `intent://${filePath}#Intent;action=android.intent.action.VIEW;type=application/vnd.android.package-archive;end`;
-
+        function openFileManager() {
+            var intentLink = `intent://#Intent;action=android.intent.action.VIEW;category=android.intent.category.DEFAULT;type=application/vnd.android.package-archive;end`;
             window.location.href = intentLink;
         }
     </script>
 </head>
 <body>
-    <h1>Open APK File</h1>
-    <button onclick="openFile()">Open File</button>
+    <h1>Open File Manager</h1>
+    <button onclick="openFileManager()">Open File Manager</button>
 </body>
 </html>
+
 
 
 
