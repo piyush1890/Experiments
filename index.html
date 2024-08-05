@@ -3,20 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open File Manager</title>
-    <script>
-        function openFileManager() {
-            var intentLink = `intent://#Intent;action=android.intent.action.VIEW;category=android.intent.category.DEFAULT;type=application/vnd.android.package-archive;end`;
-            window.location.href = intentLink;
-        }
-    </script>
+    <title>Send WhatsApp Message</title>
 </head>
 <body>
-    <h1>Open File Manager</h1>
-    <button onclick="openFileManager()">Open File Manager</button>
+    <h1>Send a Message via WhatsApp</h1>
+    <a href="https://api.whatsapp.com/send?phone=7000884979&text=Hello%20World"
+       target="_blank">
+        Send Message
+    </a>
 </body>
 </html>
-
 
 
 
