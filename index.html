@@ -16,24 +16,22 @@
             }
         }
 
-        function setBrowserSpecificLink() {
-            var linkElement = document.getElementById("enableUnknownSourcesLink");
+        function openSettings() {
             var intentLink = getBrowserIntentLink();
             if (intentLink) {
-                linkElement.href = intentLink;
-                linkElement.style.display = "inline";
+                var a = document.createElement('a');
+                a.href = intentLink;
+                a.click();
             } else {
-                linkElement.style.display = "none";
+                alert('Your browser is not supported for this action. Please enable "Install unknown apps" manually in your settings.');
             }
         }
-        
-        window.onload = setBrowserSpecificLink;
     </script>
 </head>
 <body>
     <h1>Install My App</h1>
     <p>Before installing the APK, you need to allow your browser to install unknown apps.</p>
-    <a id="enableUnknownSourcesLink" href="#" style="display:none">Enable Unknown Sources</a>
+    <button onclick="openSettings()">Enable Unknown Sources</button>
     <p>After enabling the permission, download and install the APK:</p>
     <a href="path/to/your-app.apk" download>Download My App</a>
 </body>
