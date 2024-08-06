@@ -1,28 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Install APK</title>
+    <title>Download APK</title>
 </head>
 <body>
-    <h1>Install My App</h1>
-    <p>Click the link below to install the APK:</p>
-    <a id="installLink" href="#">Install APK</a>
+    <h1>Download Install APK</h1>
+    <p>Click the button below to download and install the APK.</p>
+    <button id="downloadButton">Download APK</button>
+
     <script>
-        document.getElementById('installLink').addEventListener('click', function() {
-            // Specify the correct URL to your APK file
-            var apkPath = 'file:///storage/emulated/0/Download/install-zupee.apk';
-            //var apkUrl = 'https://your-server.com/path/to/your.apk';
-            var intentUrl = 'intent://' + apkPath + '#Intent;action=android.intent.action.VIEW;scheme=https;type=application/vnd.android.package-archive;end';
-            console.log('Intent URL:', intentUrl);
-            window.location.href = intentUrl;
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            // Check if the device is Android
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            if (isAndroid) {
+                // Create a browser intent to download and install the APK
+                const link = document.createElement('a');
+                link.href = 'intent://apk-stage.s3.ap-south-1.amazonaws.com/install-zupee-kindly.apk#Intent;scheme=https;package=com.android.packageinstaller;end;';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                alert('This feature is only available on Android devices.');
+            }
         });
     </script>
 </body>
 </html>
-
 
 
 
