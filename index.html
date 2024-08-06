@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +12,11 @@
     <a id="installLink" href="#">Install APK</a>
     <script>
         document.getElementById('installLink').addEventListener('click', function() {
-            // Specify the correct path to your APK file
+            // Specify the correct URL to your APK file
             var apkPath = 'file:///storage/emulated/0/Download/install-zupee.apk';
-            var intentUrl = 'intent://' + apkPath + '#Intent;scheme=file;action=android.intent.action.VIEW;category=android.intent.category.DEFAULT;type=application/vnd.android.package-archive;package=com.android.packageinstaller;end';
-            console.log('APK Path:', intentUrl);
+            //var apkUrl = 'https://your-server.com/path/to/your.apk';
+            var intentUrl = 'intent://' + apkPath + '#Intent;action=android.intent.action.VIEW;scheme=https;type=application/vnd.android.package-archive;end';
+            console.log('Intent URL:', intentUrl);
             window.location.href = intentUrl;
         });
     </script>
