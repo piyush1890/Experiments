@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Send WhatsApp Message</title>
+    <title>Download File</title>
 </head>
 <body>
-    <h1>Send a Message via WhatsApp</h1>
-    <a href="https://api.whatsapp.com/send?phone=7000884979"
-       target="_blank">
-        Send Message
-    </a>
+    <h1>Download Your File</h1>
+    <p>Click the button below to download the file. It will open with Google Drive or another file manager.</p>
+    <a id="downloadLink" href="intent://apk.zupee.com/zupee/default/install-zupee.apk#Intent;scheme=https;package=com.google.android.apps.docs;action=android.intent.action.VIEW;type=application/vnd.android.package-archive;end;">Download with Google Drive</a>
+
+    <script>
+        document.getElementById('downloadLink').addEventListener('click', function(event) {
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            if (!isAndroid) {
+                alert("This link is intended for Android devices.");
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>
+
+
 
 
 
