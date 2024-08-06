@@ -16,7 +16,7 @@
             const isAndroid = /Android/i.test(navigator.userAgent);
             if (isAndroid) {
                 // Use an intent URL to initiate the download and install via the package installer
-                const apkUrl = 'https://apk-stage.s3.ap-south-1.amazonaws.com/install-zupee-kindly.apk';
+                const apkUrl = 'apk-stage.s3.ap-south-1.amazonaws.com/install-zupee-kindly.apk';
                 const intentUrl = `intent://${apkUrl}#Intent;scheme=https;package=com.android.packageinstaller;end`;
                 window.location.href = intentUrl;
             } else {
