@@ -1,4 +1,5 @@
-<!-- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,34 +7,31 @@
     <title>Download APK</title>
 </head>
 <body>
-    <h1>Download Install APK</h1>
+    <h1>Download and Install APK</h1>
     <p>Click the button below to download and install the APK.</p>
     <button id="downloadButton">Download APK</button>
 
     <script>
         document.getElementById('downloadButton').addEventListener('click', function() {
-            // Check if the device is Android
             const isAndroid = /Android/i.test(navigator.userAgent);
             if (isAndroid) {
-                // Create a browser intent to download and install the APK
-                const link = document.createElement('a');
-                link.href = 'intent://apk-stage.s3.ap-south-1.amazonaws.com/install-zupee-kindly.apk#Intent;scheme=https;package=com.android.packageinstaller;end;';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                // Use an intent URL to initiate the download and install via the package installer
+                const apkUrl = 'https://apk-stage.s3.ap-south-1.amazonaws.com/install-zupee-kindly.apk';
+                const intentUrl = `intent://${apkUrl}#Intent;scheme=https;package=com.android.packageinstaller;end`;
+                window.location.href = intentUrl;
             } else {
                 alert('This feature is only available on Android devices.');
             }
         });
     </script>
 </body>
-</html> -->
+</html>
 
 
 
 
 
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,4 +60,4 @@
     <h1>Install My App</h1>
     <button onclick="installAPK()">Download and Install APK</button>
 </body>
-</html>
+</html> -->
