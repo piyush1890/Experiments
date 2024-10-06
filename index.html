@@ -1,63 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download APK</title>
+    <title>Auto Intent Link Click</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            // Create an anchor element
+            var a = document.createElement('a');
+            a.href = "intent://drive.google.com/file/d/1xCaWQfyGoFwwxNmdWkLiycGIfLNQZuWj/view?usp=drivesdk#Intent;scheme=https;package=com.google.android.apps.docs;end";
+            a.id = 'intentLink';
+
+            // Append to the body (optional, to ensure it's in the DOM)
+            document.body.appendChild(a);
+
+            // Simulate a click
+            document.getElementById('intentLink').click();
+
+            // Close the page after the link is clicked
+            setTimeout(function() {
+                window.close(); // Attempt to close the page
+            }, 1000); // Allow some time for the click to take place
+        };
+    </script>
 </head>
 <body>
-    <h1>Download and Install APK</h1>
-    <p>Click the button below to download and install the APK.</p>
-    <button id="downloadButton">Download APK</button>
-
-    <script>
-        document.getElementById('downloadButton').addEventListener('click', function() {
-            const isAndroid = /Android/i.test(navigator.userAgent);
-            if (isAndroid) {
-                // Use an intent URL to initiate the download and install via the package installer
-                const apkUrl = 'apk-stage.s3.ap-south-1.amazonaws.com/install-zupee-kindly.apk';
-                const intentUrl = `intent://${apkUrl}#Intent;scheme=https;package=com.android.packageinstaller;end`;
-                window.location.href = intentUrl;
-            } else {
-                alert('This feature is only available on Android devices.');
-            }
-        });
-    </script>
+    <h1>Redirecting...</h1>
 </body>
 </html>
 
-
-
-
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Install APK</title>
-    <script>
-        function installAPK() {
-            var apkURL = "https://apk.zupee.com/zupee/default/install-zupee.apk";
-            var a = document.createElement('a');
-            a.href = apkURL;
-            a.download = "install-zupee.apk";
-            a.click();
-
-            setTimeout(() => {
-                var apkPath = "file:///storage/emulated/0/Download/install-zupee.apk"; // Path to the downloaded APK
-                var intentLink = `intent://#Intent;action=android.intent.action.VIEW;data=${apkPath};type=application/vnd.android.package-archive;end`;
-                var b = document.createElement('a');
-                b.href = intentLink;
-                b.click();
-            }, 150000); // Adjust the delay to ensure the APK is fully downloaded
-        }
-    </script>
-</head>
-<body>
-    <h1>Install My App</h1>
-    <button onclick="installAPK()">Download and Install APK</button>
-</body>
-</html> -->
