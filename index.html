@@ -1,19 +1,53 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        window.onload = function() {
-            document.getElementById('autoClickLink').click();
-        };
-    </script>
-    <title>Download File</title>
+    <title>Download Progress</title>
 </head>
 <body>
-    <a href="https://github.com/piyush1890/Experiments/releases/download/apk-release/install-zupee.19.apk" target="_blank">Download File</a>
-    <a href="downloadsapp://open" target="_blank">Open Downloads Folder</a>
-
+    <button id="downloadBtn">Download APK</button>
+    <progress id="progressBar" value="0" max="100" style="width: 100%;"></progress>
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', downloadFile);
+        function downloadFile() {
+            const url = 'https://github.com/piyush1890/Experiments/releases/download/apk-release/install-zupee.19.apk';  // Your Akamai link
+            const progressBar = document.getElementById('progressBar');
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const total = parseInt(response.headers.get('Content-Length'), 10);
+                    const reader = response.body.getReader();
+                    const writer = new WritableStream({
+                        write(chunk) {
+                            // Update progress
+                            const loaded = chunk.length;
+                            const progress = Math.min(100, (loaded / total) * 100);
+                            progressBar.value = progress;
+                        }
+                    });
+                    return new Response(reader, {
+                        headers: response.headers,
+                        status: response.status,
+                        statusText: response.statusText
+                    });
+                })
+                .then(response => {
+                    return response.blob();
+                })
+                .then(blob => {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'file.apk';  // Default filename
+                    link.click();
+                })
+                .catch(error => {
+                    console.error('Download error:', error);
+                });
+        }
+    </script>
 </body>
 </html>
-
